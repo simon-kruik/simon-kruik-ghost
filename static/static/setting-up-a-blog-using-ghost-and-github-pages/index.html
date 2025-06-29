@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>Setting up a blog using Ghost and GitHub Pages</title>
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css?v=779311b633" />
+
+	<link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Simon Kruik" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Setting up a blog using Ghost and GitHub Pages" />
+    <meta property="og:description" content="Choosing your technology With the wide array of blog hosting sites and technologies available, choosing one can be a pretty daunting task. The main factors I looked at when considering the options available were:  Peer approval: Did people I know and trust have good experiences with it? Ongoing cost: Can" />
+    <meta property="og:url" content="http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/" />
+    <meta property="article:published_time" content="2020-10-24T06:49:58.000Z" />
+    <meta property="article:modified_time" content="2020-10-24T06:50:11.000Z" />
+    <meta property="article:tag" content="systems" />
+    <meta property="article:tag" content="software" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Setting up a blog using Ghost and GitHub Pages" />
+    <meta name="twitter:description" content="Choosing your technology With the wide array of blog hosting sites and technologies available, choosing one can be a pretty daunting task. The main factors I looked at when considering the options available were:  Peer approval: Did people I know and trust have good experiences with it? Ongoing cost: Can" />
+    <meta name="twitter:url" content="http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Simon Kruik" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="systems, software" />
+    <meta name="twitter:site" content="@caeserIII" />
+    <meta name="twitter:creator" content="@caeserIII" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Simon Kruik",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Simon Kruik",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2020/10/C037251-R1-16-16-1.jpg",
+            "width": 1107,
+            "height": 1075
+        },
+        "url": "http://localhost:2368/author/simon/",
+        "sameAs": [
+            "https://twitter.com/caeserIII"
+        ]
+    },
+    "headline": "Setting up a blog using Ghost and GitHub Pages",
+    "url": "http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/",
+    "datePublished": "2020-10-24T06:49:58.000Z",
+    "dateModified": "2020-10-24T06:50:11.000Z",
+    "keywords": "systems, software",
+    "description": "Choosing your technology\nWith the wide array of blog hosting sites and technologies available, choosing\none can be a pretty daunting task. The main factors I looked at when considering\nthe options available were:\n\n * Peer approval: Did people I know and trust have good experiences with it?\n * Ongoing cost: Can I minimise cost, or even get it hosted for free?\n * Ease-of-use: Is it easy to setup, maintain and add to?\n\nHosting Provider\nMany of my colleagues who work in IT have their own servers or ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.36" />
+    <link rel="alternate" type="application/rss+xml" title="Simon Kruik" href="../rss/index.html" />
+</head>
+
+<body class="post-template tag-systems tag-software">
+
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-home"><a href="../index.html"><span>Home</span></a></li>
+		<li class="nav-tags"><a href="../tags/index.html"><span>Tags</span></a></li>
+		<li class="nav-author"><a href="../author/simon/index.html"><span>Author</span></a></li>
+</ul>
+
+				<ul class="nav-side">
+					<li class="nav-twitter"><a aria-label="Twitter" href="https://twitter.com/caeserIII" title="@caeserIII" target="_blank"><i class="icon icon-twitter" aria-hidden="true"></i></a></li>
+					<li class="nav-rss"><a title="RSS" href="../rss/index.html" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></li>
+					<li class="nav-search" style="display: none;"><a title="Search"><i class="icon icon-search" aria-hidden="true"></i></a></li>
+				</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" style="display: none;" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
+</div>
+
+<header class="post-header ">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			<span class="post-count">systems</span>
+		</span>
+		<h1 class="post-title">Setting up a blog using Ghost and GitHub Pages</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+					<figure class="post-meta-avatar avatar">
+						<a href="../author/simon/index.html" class="author-avatar">
+								<img class="author-profile-image" src="../content/images/2020/10/C037251-R1-16-16-1.jpg" alt="Simon Kruik" />
+						</a>
+					</figure>
+			</div>
+			<h4 class="post-meta-author"><a href="../author/simon/index.html">Simon Kruik</a></h4>
+			<time datetime="24-10-2020">24 Oct 2020</time> &bull; 3 min read
+		</div>
+	</div>
+</header>
+
+<main class="content" role="main">
+	<article class="post tag-systems tag-software featured no-image">
+		<div class="inner">
+
+			<section class="post-content">
+				<!--kg-card-begin: markdown--><h2 id="choosingyourtechnology">Choosing your technology</h2>
+<!--kg-card-end: markdown--><p>With the wide array of blog hosting sites and technologies available, choosing one can be a pretty daunting task. The main factors I looked at when considering the options available were:</p><!--kg-card-begin: markdown--><ul>
+<li>Peer approval: Did people I know and trust have good experiences with it?</li>
+<li>Ongoing cost: Can I minimise cost, or even get it hosted for free?</li>
+<li>Ease-of-use: Is it easy to setup, maintain and add to?</li>
+</ul>
+<!--kg-card-end: markdown--><!--kg-card-begin: markdown--><h4 id="hostingprovider">Hosting Provider</h4>
+<!--kg-card-end: markdown--><p>Many of my colleagues who work in IT have their own servers or <a href="https://en.wikipedia.org/wiki/Virtual_private_server">VPSs, </a>and I've been privy to many rants about having to update or migrate servers due to security issues or their preferred applications losing support. However one of my colleagues had recently moved their website from their VPS onto <a href="https://pages.github.com/">GitHub Pages</a>, a free hosting technology that uses your free GitHub repository to store and server your webpage. It has a few <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#usage-limits">limits </a>(1GB Repository, 100GB bandwidth/month), but for a simple blog site, it's reasonably suitable. By default it hosts your website on https://&lt;GitHub Username&gt;.github.io (note the included TLS - nice!), but can be <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-custom-domain-for-your-github-pages-site">customised to use your own domain</a>, something that I'm keen to do in the future, to look a bit more professional.</p><!--kg-card-begin: markdown--><h4 id="contentmanagementsystem">Content Management System</h4>
+<!--kg-card-end: markdown--><p>The only real drawback with GitHub Pages is that it doesn't in-and-of-itself offer an easy way to add and modify content, you'd have to edit the raw HTML/CSS/JS yourself. It does recommend using the static site generator <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/setting-up-a-github-pages-site-with-jekyll">Jekkyl</a>, which uses markdown syntax to generate blog-style websites. Having used another markdown-based static site generator (<a href="https://blog.getpelican.com/">Pelican</a>) for my <a href="https://eresearch.uts.edu.au/">workplace's website</a>, I understand some of the benefits of this, especially when used with a git repo - git commits allow you to easily see what members have contributed, simple formatting and editing using markdown text files, and intuitive folder-based structures. For a personal website however, I want to be able to quickly and easily add pages full of various types of content, and trust that it's easily readable on various types of devices. For this reason I chose a <a href="https://en.wikipedia.org/wiki/Content_management_system">CMS (Content Management System) </a>that I'd seen used to great effect in <a href="https://www.troyhunt.com/its-a-new-blog/">one of my favourite blogs</a>, and had recommended to me as a good open-source option - <a href="https://ghost.org/">ghost</a>. It's a web-based CMS with decent free themes available and supports both basic and markdown formatting as necessary.</p><!--kg-card-begin: markdown--><h5 id="connectinggithubpagesandghost">Connecting GitHub Pages and Ghost</h5>
+<!--kg-card-end: markdown--><p>Unfortunately, because ghost uses <a href="https://ghost.org/docs/concepts/hosting/#self-hosting">multiple services</a>, such as a database and web-server, it doesn't easily integrate with GitHub Pages. Luckily though where there's a will there's more than likely already a GitHub repository. In this case paladini's super simple<a href="https://github.com/paladini/ghost-on-github-pages"> ghost-on-github-pages repo</a>; it guides you through the process of setting up ghost on your macOS or linux machine, then includes some scripts to use the <a href="https://pypi.org/project/buster/">buster python </a>package to create a static copy of your ghost website and upload it to your GitHub repo. Because my main machine is a Windows box, I installed Ubuntu on it via <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux</a> and the <a href="https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab">Microsoft Store</a>, which allows me to easily use a linux distro without needing to run a full <a href="https://en.wikipedia.org/wiki/Virtual_machine">VM</a> via VirtualBox. I did run into a few issues, namely that I didn't have pip installed or available via the default repositories so I had to <a href="https://pip.pypa.io/en/stable/installing/">install </a>that manually, some of the scripts where unclear as to whether they needed to be run as root or local user, so I had to re-run some with <em>sudo</em> prefixed, and I needed to change the default port in the deploy.sh script. Overall it's a pretty clean experience that results in a locally-hosted ghost install to write and preview website posts and settings, and then a simple script to run to deploy that website to your GitHub repo. It mimicks a dev/prod environment, which is handy if you want to test-out features/themes without changing your public website.</p><!--kg-card-begin: markdown--><h2 id="wheretofromhere">Where to from here?</h2>
+<!--kg-card-end: markdown--><p>This system ends up turning out a little <em>jank</em> (one of my favourite types of system), since you're combining two technologies that were never really designed to be combined, but getting a cheap (free!) solution out of it. It does mean however that there could be breaking changes that totally destroy this workflow in the future, or I could get frustrated with having to spin-up ghost locally everytime I want to change anything on my website. In either case, there's a few alternatives I'd be interested in looking at:</p><!--kg-card-begin: markdown--><ul>
+<li>A <a href="https://ghost.org/pricing/">Ghost Pro</a> solution, hosted by the Ghost Foundation. This is a little pricey, but would offer the same nice CMS option, without having to worry about filesize limits or running a local Ghost environment</li>
+<li>Using Jekkyl with GitHub Pages for a more supported solution.</li>
+<li>Hosting a webpage on my own VPS or home server, this is only really viable if I'm also planning to host other services on the same box (e.g. game/media servers, log analysers, home automation solutions), since the support necessary is much larger.</li>
+</ul>
+<!--kg-card-end: markdown-->
+			</section>
+
+			<section class="post-footer">
+
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Setting up a blog using Ghost and GitHub Pages&url=http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages//&amp;title=Setting up a blog using Ghost and GitHub Pages" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Setting up a blog using Ghost and GitHub Pages&amp;body=http://localhost:2368/setting-up-a-blog-using-ghost-and-github-pages/">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					<a href="../tag/systems/index.html">systems</a> <a href="../tag/software/index.html">software</a>
+				</aside>
+
+			</section>
+
+
+			<section class="post-comments">
+				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
+			   <div id="disqus_thread"></div>
+			</section>
+
+
+			<aside class="post-nav">
+				<div class="clear"></div>
+			</aside>
+
+
+		</div>
+	</article>
+</main>
+
+
+
+
+		<div id="search" class="container">
+			<div class="content">
+				<div class="blog-header">
+					<div class="inner">
+						<div class="archive archive-search box archive-box">
+							<span class="archive-info">
+								<span class="archive-type">Archive</span>
+							</span>
+							<h2 class="archive-title">Search</h2>
+							<form class="search">
+								<input type="text" id="search-field" placeholder="Search all posts&#8230;" />
+								<input type="submit" value="Search" />
+							</form>
+							<div id="topics">
+								<span class="archive-info">
+									<span class="archive-type">Archive</span>
+								</span>
+								<h2 class="archive-title">Topics</h2>
+								<span class="post-tags archive-taglist">
+											<a href='../tag/systems/index.html'>systems: 1</a>
+											<a href='../tag/software/index.html'>software: 1</a>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="results"></div>
+			</div>
+			<div class="search-close"></div>
+		</div>
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">Simon Kruik &copy; 2020</span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a></span>
+			</nav>
+		</div>
+
+	</section>
+
+	<script type="text/javascript" src="../assets/js/script.js?v=779311b633"></script>
+
+	<script>
+  $(document).ready(function () {
+		var viewport = $(window);
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightBlock(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+		// Reading progress bar on window top
+	  function readingProgress() {
+			var postBottom = post.offset().top + post.height();
+			var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+	  }
+	  readingProgress();
+		// Trigger reading progress
+	  viewport.on({
+	    'scroll': function() {
+	      readingProgress();
+	    },
+	    'resize': function() {
+	      readingProgress();
+	    },
+	    'orientationchange': function() {
+	      readingProgress();
+	    }
+	  });
+		// Check if disqus is defined by code injection
+		if (typeof disqus === 'undefined') {
+			// hide comment section
+	    $('.post-comments').css({
+	      'display': 'none'
+	    });
+	  } else {
+	    $('#show-disqus').on('click', function() {
+	      $.ajax({
+	        type: "GET",
+	        url: "//" + disqus + ".disqus.com/embed.js",
+	        dataType: "script",
+	        cache: true
+	      });
+	      $(this).parent().addClass('activated');
+	    });
+	  }
+  });
+</script>
+
+
+	
+
+</body>
+</html>
